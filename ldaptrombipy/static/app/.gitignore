@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 src/assets/images/*
+dist/img
 public/config.json
 # local env files
 .env.local
