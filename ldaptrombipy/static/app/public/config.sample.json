@@ -1,8 +1,5 @@
-// File example of frontend parameters
-// remove comments for the config.json
 {
     "API_ENDPOINT": "<http://mondomaine/trombi_api>",
-    // anyone can upload photo ?
     "SELF_UPLOAD_PHOTO": true
 
 }

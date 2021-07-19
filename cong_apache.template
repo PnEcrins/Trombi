@@ -1,4 +1,3 @@
-  GNU nano 4.8                                              /etc/apache2/sites-available/trombi.conf                                                        
 <VirtualHost *:80>
     ServerName localhost
     Alias /trombi /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist
