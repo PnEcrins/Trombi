@@ -1,0 +1,7 @@
+flask
+ldap3
+caldav
+ics
+flask-cors
+python-dotenv
+gunicorn

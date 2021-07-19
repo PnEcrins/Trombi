@@ -1,0 +1,12 @@
+[Unit]
+Description=Trombi
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User={{USER}}
+ExecStart=/home/{{USER}}/trombi/gunicorn_start.sh
+[Install]
+WantedBy=multi-user.target
