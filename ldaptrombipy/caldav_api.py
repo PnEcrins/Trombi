@@ -41,17 +41,18 @@ def user_cal(email):
             calender_with_all_events.events.add(event)
     r = []
     for e in calender_with_all_events.events:
-        end_date = e.end.datetime
-        if end_date.hour == 0 and end_date.minute == 0:
-            end_date = end_date - timedelta(1)
-            # 23h59 not work with fullcalendar ...
-            end_date = end_date.replace(hour=20, minute=59)
         event_as_dict = {
             "title": e.name,
             "id": e.uid,
             "description": e.description,
             "start": str(e.begin),
-            "end": str(end_date),
+            "end": str(e.end),
+            "begin_str": e.begin.datetime.strftime("%d/%m/%Y %H:%M"),
+            "end_str": e.end.datetime.strftime("%d/%m/%Y %H:%M"),
+            "allDay": e.all_day,
+            "editable": False,
+            "organizer": str(e.organizer),
+            "attendees": [f"{att.common_name} ({att.email})" for att in e.attendees]
         }
         r.append(event_as_dict)
     return jsonify(r)

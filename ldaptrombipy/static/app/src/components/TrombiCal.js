@@ -12,16 +12,17 @@ export default {
     mounted() {
         axios.get(`${this.$config.API_ENDPOINT}/users_order_by_dep`).then((response) => {
             this.allUsers = response.data
-            this.filteredUsers = this.allUsers;
+            this.filteredUsers = Object.assign(this.allUsers, {});
         })
     },
-    
+
     data() {
         return {
             'departments': {},
             'currentUser': null,
             "allUsers": {},
-            "filteredUsers": {}
+            "filteredUsers": {},
+            "searchPattern": null
         }
     },
     methods : {
@@ -52,6 +53,19 @@ export default {
                     }
                 });
             })
+        },
+        filterUsers() {
+            this.filteredUsers = Object.assign({}, this.allUsers);
+            if(this.searchPattern.length === 0 ) {
+                this.filteredUsers = this.allUsers;
+            } 
+            else {
+                Object.keys(this.filteredUsers).forEach(dep => {
+                    this.filteredUsers[dep] =  this.allUsers[dep].filter(user => {
+                        return user.displayName.toLowerCase().indexOf(this.searchPattern.toLowerCase()) !== -1
+                    });
+                })
+            }
         }
     },
 

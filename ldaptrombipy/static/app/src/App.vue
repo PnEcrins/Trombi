@@ -16,6 +16,7 @@ export default {
 
 <style>
 @import'~bootstrap/dist/css/bootstrap.css';
+@import'../public/custom.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

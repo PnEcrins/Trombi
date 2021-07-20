@@ -1,19 +1,19 @@
 <template>
 
-        <div class="card-body">
+        <div class="card-body no-padding-top">
             <h5 class="card-title">{{user?.displayName}}</h5>
-            <p v-if="user?.description?.length > 0">
-                {{user?.description[0]}}
-            </p>
-            <p>
+                <div v-if="user?.description?.length > 0">
+                    {{user?.description[0]}}
+                </div>
+            <div>
                 Téléphone bureau : {{user?.homePhone}}
-            </p>
-            <p>
+            </div>
+            <div>
                 Téléphone portable : TODO 
-
-            </p>
+            </div>
             <a v-bind:href="'mailto: ' + user?.mail"  class="btn btn-primary">Email</a>
             <button v-if="displaySeeMoreBtn" @click="changeUser(user)" class="btn btn-outline-info ml-3">Voir plus</button>
+
             <div v-if="displayAddPhoto">
                 <br>
                 <div v-if="$config.SELF_UPLOAD_PHOTO" class="custom-file">
@@ -67,5 +67,12 @@ export default {
 <style>
     .custom-file{
         width: inherit !important;;
+    }
+
+    .no-padding-top {
+        padding-top: 5px!important;
+    }
+    .card-body div {
+        margin-bottom: 5px;
     }
 </style>

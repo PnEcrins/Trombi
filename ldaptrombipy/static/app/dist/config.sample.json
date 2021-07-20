@@ -1,5 +1,5 @@
 {
     "API_ENDPOINT": "<http://mondomaine/trombi_api>",
-    "SELF_UPLOAD_PHOTO": true
-
+    "SELF_UPLOAD_PHOTO": true,
+    "APP_NAME": "Trombi PNE"
 }

@@ -89,8 +89,13 @@ def all_users_by_dep(ldap_cnx):
                 else:
                     cur_dep = "Autre"
                 data.setdefault(cur_dep, []).append(user)
-    return jsonify(data)
+    sorted_users = {}
+    for key, val in data.items():
+        sorted_users[key] = sorted(val, key=lambda k : k["displayName"])
+    return jsonify(sorted_users)
 
+def sort_key(users):
+    return users["displayName"]
 
 @blueprint.route("/upload_photo/<user>", methods=["POST"])
 def updload_photo(user):

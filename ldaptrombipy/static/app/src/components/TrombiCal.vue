@@ -1,8 +1,17 @@
 <template>
    <div id="wrapper">
         <div id="sidebar-wrapper">
-          <h1 id="refresh" @click="refresh()" >Trombi</h1>
+              <img id="logo" src="../assets/images/logo.png">
+
+            <h1 id="refresh" @click="refresh()" > {{$config.APP_NAME}} </h1>
+
             <ul class="sidebar-nav">
+              <input 
+                class="form form-control" 
+                placeholder="Rechercher" 
+                type="text" name="search" id="search"
+                v-model="searchPattern" @input="filterUsers"
+              >
                 <li v-for="(users, dep) in allUsers" v-bind:key="users">
                     <a class="dep"
                         href="#"
@@ -26,11 +35,11 @@
               <h2> Fiche {{currentUser?.displayName}} </h2>
               <div class="card mb-3">
                 <div class="row g-0">
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                       <img v-if="currentUser.has_photo" :src="require(`../assets/images/${currentUser?.sAMAccountName}.jpg`)" class="img-fluid rounded-start" alt="...">
                       <img v-else src="../assets/images/no-photo.png" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-10 no-padding" >
                     <UserCard 
                       :user="currentUser" 
                       @hasPhoto="changeHasPhotoProp($event)"
@@ -46,7 +55,7 @@
 
             </div>
               <div v-for="(users, dep) in filteredUsers" v-bind:key="users" >
-                  <h3> {{dep}} </h3> <br>
+                  <h3 v-if="users.length > 0" > {{dep}} </h3> <br>
                   <div class="row">
                     <div class="col-sm" v-for="user in users" v-bind:key="user">
                       <div class="card" style="width: 18rem;">
@@ -79,7 +88,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.no-padding {
+  padding-left: 0px!important;
+}
 ul {
   list-style-type: none;
   padding: 0;
