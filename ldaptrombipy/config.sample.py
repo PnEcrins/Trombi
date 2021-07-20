@@ -5,6 +5,7 @@ PORT = 389
 # SERVER = "ldap://192.168.20.230"
 DN = "MY_DN"
 PASSWORD = "lalala"
+EXCLUDED_GROUPS = ["Utilisateurs Partis"]
 
 
 # CALDAV CONFIG

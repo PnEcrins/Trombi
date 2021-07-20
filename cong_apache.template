@@ -1,15 +1,12 @@
-<VirtualHost *:80>
-    ServerName localhost
-    Alias /trombi /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist
-    <Directory /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist >
-    Require all granted
-    </Directory>
+Alias /trombi /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist
+<Directory /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist >
+Require all granted
+</Directory>
 
 
-    <Location /trombi/api>
-        ProxyPass http://127.0.0.1:5006
-        ProxyPassReverse  http://127.0.0.1:5006
+<Location /trombi/api>
+    ProxyPass http://127.0.0.1:5006
+    ProxyPassReverse  http://127.0.0.1:5006
 
-    </Location>
+</Location>
 
-</VirtualHost>

@@ -7,6 +7,7 @@ from werkzeug.exceptions import BadRequest
 
 from ldaptrombipy.ldap_utils import ldap_connect
 from ldaptrombipy.env import STATIC_IMAGE_PATH
+from ldaptrombipy.config import EXCLUDED_GROUPS
 
 blueprint = Blueprint("api", __name__)
 base = "dc=pne,dc=dom"
@@ -62,7 +63,6 @@ def all_users_by_dep(ldap_cnx):
     filters = request.args.to_dict()
     f_string = build_ldap_filter_string(filters)
     # TODO : groups voir nextcloud
-    # if "group" in filters:
     ldap_cnx.search(
         search_base=base,
         search_filter=f_string,
@@ -73,15 +73,22 @@ def all_users_by_dep(ldap_cnx):
     for r in ldap_cnx.response:
         user = r.get("attributes", "")
         if user:
-            login = user.get("sAMAccountName", "") + ".jpg"
-            file = Path(STATIC_IMAGE_PATH / login)
-            user["has_photo"] = file.exists()
-            dep = user["department"]
-            if len(dep) > 0:
-                cur_dep = dep
-            else:
-                cur_dep = "Autre"
-            data.setdefault(cur_dep, []).append(user)
+            dn = user["distinguishedName"].split(",")
+            dn = "=".join(dn).split("=")
+            wanted_user = True
+            for excluded_groups in EXCLUDED_GROUPS:
+                if excluded_groups in dn:
+                    wanted_user = False
+            if wanted_user:
+                login = user.get("sAMAccountName", "") + ".jpg"
+                file = Path(STATIC_IMAGE_PATH / login)
+                user["has_photo"] = file.exists()
+                dep = user["department"]
+                if len(dep) > 0:
+                    cur_dep = dep
+                else:
+                    cur_dep = "Autre"
+                data.setdefault(cur_dep, []).append(user)
     return jsonify(data)
 
 

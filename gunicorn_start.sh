@@ -11,7 +11,6 @@ echo $APP_DIR
 # activate the virtualenv
 source $APP_DIR/venv/bin/activate
 
-echo "YES"
-# # Start your gunicorn
+# Start your gunicorn
 exec gunicorn  ldaptrombipy.wsgi:app --error-log $APP_DIR/var/log/trombi_errors.log --pid="${app_name}.pid" --timeout=$gun_timeout -w "${gun_num_workers}"  -b "${gun_host}:${gun_port}"  -n "${app_name}"
 
