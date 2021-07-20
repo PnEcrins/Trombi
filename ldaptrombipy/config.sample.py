@@ -1,11 +1,13 @@
+API_PORT = 5006
 # LDAP CONFIG
-SERVER = "127.0.0.1"
-PORT = 9999
+SERVER = "192.168.20.230"
+PORT = 389
+# SERVER = "ldap://192.168.20.230"
 DN = "CN=LDAP-OFB,OU=Services,OU=ecrins,DC=pne,DC=dom"
-PASSWORD = "<pass>"
+PASSWORD = "0F8_Ld@p$41o2"
 
 
 # CALDAV CONFIG
-CALDAV_SERVER = "<host>"
-CALDAV_USERNAME = "<email>"
-CALDAV_PASSWORD = "<pass>"
+CALDAV_SERVER = "https://mail.espaces-naturels.fr/dav/"
+CALDAV_USERNAME = "agenda_pne@ecrins-parcnational.fr"
+CALDAV_PASSWORD = "ntm"

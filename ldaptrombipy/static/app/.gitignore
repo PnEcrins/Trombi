@@ -2,6 +2,7 @@
 node_modules
 src/assets/images/*
 dist/img
+dist/config.json
 public/config.json
 # local env files
 .env.local
