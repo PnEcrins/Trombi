@@ -12,6 +12,10 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 - Affichage d'une fiche par utilisateur avec sa photo, son nom, sa fonction, sa description, son email, ses numéros de téléphone et son agenda si son email est renseigné dans l'annuaire LDAP
 - Possibilité d'ajouter ou modifier les photos des utilisateurs (stockés sur le serveur applicatif)
 
+![Screenshot HOME](https://github.com/PnEcrins/Trombi/blob/doc-readme/docs/trombi-home.jpg)
+
+![Screenshot FICHE](https://github.com/PnEcrins/Trombi/blob/doc-readme/docs/trombi-fiche.jpg)
+
 ## Technologies
 
 Backend : Python / Flask
