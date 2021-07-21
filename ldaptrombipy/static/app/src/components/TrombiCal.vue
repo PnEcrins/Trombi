@@ -2,7 +2,7 @@
    <div id="wrapper">
         <div id="sidebar-wrapper">
           <div class="logo-container">
-              <img @click="refresh()" id="logo" src="../assets/images/logo.png">
+              <img @click="refresh()" id="logo" src="../assets/logo.png">
           </div>
             <h1 id="refresh" @click="refresh()" > {{$config.APP_NAME}} </h1>
   
@@ -38,7 +38,7 @@
                 <div class="row g-0">
                   <div class="col-md-2">
                       <img v-if="currentUser.has_photo" :src="require(`../assets/images/${currentUser?.sAMAccountName}.jpg`)" class="img-fluid rounded-start" alt="...">
-                      <img v-else src="../assets/images/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
+                      <img v-else src="../assets/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
                   </div>
                   <div class="col-md-10 no-padding" >
                     <UserCard 
@@ -62,8 +62,7 @@
                   <div class="card-container" v-for="user in users" v-bind:key="user">
                     <div class="card align" style="width: 18rem;">
                       <img v-if="user.has_photo" :src="require(`../assets/images/${user?.sAMAccountName}.jpg`)" class="card-img-top">
-                      <img width="250" height="200" v-else src="../assets/images/no-photo.jpg" class="card-img-top" alt="...">
-                      <!-- <img class="card-img-top" src="../assets/images/pik.jpg" alt="Card image cap"> -->
+                      <img width="250" height="200" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
                       <UserCard 
                         :user="user" 
                         @setUser="setCurrentUser($event)" 
