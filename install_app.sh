@@ -2,6 +2,7 @@
 . settings.ini
 mkdir var 
 mkdir var/log
+mkdir ldaptrombipy/static/images
 sudo apt-get install python3-venv
 APP_DIR=$(readlink -e "${0%/*}")
 

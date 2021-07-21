@@ -49,6 +49,9 @@ export default {
             Object.keys(this.allUsers).forEach(dep => {
                 this.allUsers[dep].forEach(user => {
                     if(userLogin == user.sAMAccountName) {
+                        if(user.has_photo) {
+                            alert("Rechargez la page pour voir la nouvelle photo")
+                        }
                         user.has_photo = true;
                     }
                 });

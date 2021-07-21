@@ -13,11 +13,13 @@
                 type="text" name="search" id="search"
                 v-model="searchPattern" @input="filterUsers"
               >
-                <li v-for="(users, dep) in allUsers" v-bind:key="users">
-                    <a class="dep"
+                <li v-for="(users, dep) in filteredUsers" v-bind:key="users">
+                    <div v-if="users.length > 0">
+                      <a class="dep"
                         href="#"
                         @click="setCurrDepartment(dep)"
-                    > {{dep}} 
+                    > 
+                    {{dep}} 
                     </a> 
                         <a 
                           class="person" 
@@ -27,6 +29,8 @@
                         >
                             {{user.displayName}}
                         </a>
+                    </div>
+
                 </li>
             </ul>
         </div>
