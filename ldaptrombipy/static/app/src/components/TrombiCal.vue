@@ -74,7 +74,7 @@
                           :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.jpg`"
                           class="card-img-top"
                         >
-                        <img width="250" height="200" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
+                        <img width="250" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
                         <UserCard 
                           :user="user" 
                           @setUser="setCurrentUser($event)" 
