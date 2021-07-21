@@ -5,11 +5,11 @@
                 <div v-if="user?.description?.length > 0">
                     {{user?.description[0]}}
                 </div>
-            <div>
+            <div v-if="user?.homePhone && user?.homePhone?.length > 0" >
                 Téléphone bureau : {{user?.homePhone}}
             </div>
-            <div>
-                Téléphone portable : TODO 
+            <div v-if="user?.mobile && user?.mobile?.length > 0" >
+                Téléphone portable : {{user?.mobile}}
             </div>
             <a v-bind:href="'mailto: ' + user?.mail"  class="btn btn-primary">Email</a>
             <button v-if="displaySeeMoreBtn" @click="changeUser(user)" class="btn btn-outline-info ml-3">Voir plus</button>

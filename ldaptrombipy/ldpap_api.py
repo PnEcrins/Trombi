@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 from flask import Blueprint, jsonify, request
-from ldap3 import SUBTREE
+from ldap3 import ALL_ATTRIBUTES, SUBTREE
 from werkzeug.exceptions import BadRequest
 
 from ldaptrombipy.ldap_utils import ldap_connect
@@ -25,6 +25,7 @@ RETURNED_ATTR = [
     "mail",
     "homePhone",
     "sAMAccountName",
+    "mobile"
 ]
 
 
@@ -94,8 +95,25 @@ def all_users_by_dep(ldap_cnx):
         sorted_users[key] = sorted(val, key=lambda k : k["displayName"])
     return jsonify(sorted_users)
 
-def sort_key(users):
-    return users["displayName"]
+
+@blueprint.route("/test")
+@ldap_connect
+def test(ldap_cnx):
+    filters = request.args.to_dict()
+    f_string = build_ldap_filter_string(filters)
+    # TODO : groups voir nextcloud
+    ldap_cnx.search(
+        search_base=base,
+        search_filter=f_string,
+        search_scope=SUBTREE,
+        attributes=ALL_ATTRIBUTES,
+    )
+    with open("/tmp/truc.txt", "w") as f:
+        for r in ldap_cnx.response:
+            user = r.get("attributes", "")
+            f.write(str(user))
+    return 'la'
+    
 
 @blueprint.route("/upload_photo/<user>", methods=["POST"])
 def updload_photo(user):

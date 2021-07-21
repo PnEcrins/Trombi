@@ -1,4 +1,11 @@
 #logo {
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }

@@ -1,10 +1,11 @@
 <template>
    <div id="wrapper">
         <div id="sidebar-wrapper">
-              <img id="logo" src="../assets/images/logo.png">
-
+          <div class="logo-container">
+              <img @click="refresh()" id="logo" src="../assets/images/logo.png">
+          </div>
             <h1 id="refresh" @click="refresh()" > {{$config.APP_NAME}} </h1>
-
+  
             <ul class="sidebar-nav">
               <input 
                 class="form form-control" 
@@ -37,7 +38,7 @@
                 <div class="row g-0">
                   <div class="col-md-2">
                       <img v-if="currentUser.has_photo" :src="require(`../assets/images/${currentUser?.sAMAccountName}.jpg`)" class="img-fluid rounded-start" alt="...">
-                      <img v-else src="../assets/images/no-photo.png" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
+                      <img v-else src="../assets/images/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
                   </div>
                   <div class="col-md-10 no-padding" >
                     <UserCard 
@@ -54,24 +55,27 @@
               </div>
 
             </div>
-              <div v-for="(users, dep) in filteredUsers" v-bind:key="users" >
-                  <h3 v-if="users.length > 0" > {{dep}} </h3> <br>
-                  <div class="row">
-                    <div class="col-sm" v-for="user in users" v-bind:key="user">
-                      <div class="card" style="width: 18rem;">
-                        <img v-if="user.has_photo" :src="require(`../assets/images/${user?.sAMAccountName}.jpg`)" class="card-img-top">
-                        <img width="100px" v-else src="../assets/images/no-photo.png" class="card-img-top" alt="...">
-                        <!-- <img class="card-img-top" src="../assets/images/pik.jpg" alt="Card image cap"> -->
-                        <UserCard 
-                          :user="user" 
-                          @setUser="setCurrentUser($event)" 
-                          displaySeeMoreBtn
-                        />
-                      </div>
+            <div v-for="(users, dep) in filteredUsers" v-bind:key="users"  >
+              <div v-if="users.length > 0">
+               <h3 > {{dep}} </h3> 
+                <div class="row">
+                  <div class="card-container" v-for="user in users" v-bind:key="user">
+                    <div class="card align" style="width: 18rem;">
+                      <img v-if="user.has_photo" :src="require(`../assets/images/${user?.sAMAccountName}.jpg`)" class="card-img-top">
+                      <img width="250" height="200" v-else src="../assets/images/no-photo.jpg" class="card-img-top" alt="...">
+                      <!-- <img class="card-img-top" src="../assets/images/pik.jpg" alt="Card image cap"> -->
+                      <UserCard 
+                        :user="user" 
+                        @setUser="setCurrentUser($event)" 
+                        displaySeeMoreBtn
+                      />
                     </div>
                   </div>
-
+                </div>
               </div>
+ 
+
+            </div>
 
 
           </div>
@@ -88,6 +92,16 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.container-fluid {
+  width: 90%!important;
+}
+
+.card-container {
+    margin-right: 20px;
+
+}
+
 .no-padding {
   padding-left: 0px!important;
 }
@@ -174,5 +188,9 @@ a {
 
 #refresh {
   cursor: pointer;
+}
+
+.align img {
+  align-items: center;
 }
 </style>
