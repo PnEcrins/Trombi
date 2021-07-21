@@ -64,7 +64,11 @@
                 <div class="row">
                   <div class="card-container" v-for="user in users" v-bind:key="user">
                     <div class="card align" style="width: 18rem;">
-                      <img v-if="user.has_photo" :src="require(`../assets/images/${user?.sAMAccountName}.jpg`)" class="card-img-top">
+                      <img 
+                        v-if="user.has_photo" 
+                        :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.jpg`"
+                        class="card-img-top"
+                      >
                       <img width="250" height="200" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
                       <UserCard 
                         :user="user" 
