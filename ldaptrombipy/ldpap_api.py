@@ -29,6 +29,7 @@ RETURNED_ATTR = [
 ]
 
 
+
 def build_ldap_filter_string(filters):
     and_filters = {"objectclass": "user", "cn": "*", "sn": "*"}
     if "department" in filters:

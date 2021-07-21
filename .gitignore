@@ -5,11 +5,11 @@ venv/*
 __pycache__/
 *.py[cod]
 *$py.class
-
+ldaptrombipy/static/images/**
 # C extensions
 *.so
 
-# Distribution / packaging
+# Distribution / packagin
 .Python
 build/
 develop-eggs/

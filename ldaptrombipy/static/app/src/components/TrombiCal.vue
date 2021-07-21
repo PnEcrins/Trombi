@@ -36,11 +36,14 @@
               <h2> Fiche {{currentUser?.displayName}} </h2>
               <div class="card mb-3">
                 <div class="row g-0">
-                  <div class="col-md-2">
-                      <img v-if="currentUser.has_photo" :src="require(`../assets/images/${currentUser?.sAMAccountName}.jpg`)" class="img-fluid rounded-start" alt="...">
+                  <div class="col-md-3">
+                      <img 
+                        v-if="currentUser.has_photo" :src="`${$config.API_ENDPOINT}/static/images/${currentUser?.sAMAccountName}.jpg`"
+                        class="img-fluid rounded-start"
+                        >
                       <img v-else src="../assets/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
                   </div>
-                  <div class="col-md-10 no-padding" >
+                  <div class="col-md-9 no-padding" >
                     <UserCard 
                       :user="currentUser" 
                       @hasPhoto="changeHasPhotoProp($event)"

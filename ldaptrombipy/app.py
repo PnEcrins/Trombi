@@ -20,10 +20,9 @@ def create_app():
         app.json_encoder = CustomJsonEncoder
         from ldaptrombipy.ldpap_api import blueprint
         from ldaptrombipy import errors
-
         app.register_blueprint(blueprint)
+        
         from ldaptrombipy.caldav_api import blueprint
-
         app.register_blueprint(blueprint, url_prefix="/caldav")
         CORS(app, supports_credentials=True)
     return app
