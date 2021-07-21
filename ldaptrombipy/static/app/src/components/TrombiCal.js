@@ -28,7 +28,6 @@ export default {
     methods : {
         setCurrentUser(person) {
             this.currentUser = person;
-            this.filteredUsers = [];
         },
         setCurrDepartment(dep) {
             this.currentUser = null;

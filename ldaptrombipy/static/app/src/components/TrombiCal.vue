@@ -62,30 +62,33 @@
               </div>
 
             </div>
-            <div v-for="(users, dep) in filteredUsers" v-bind:key="users"  >
-              <div v-if="users.length > 0">
-               <h3 > {{dep}} </h3> 
-                <div class="row">
-                  <div class="card-container" v-for="user in users" v-bind:key="user">
-                    <div class="card align" style="width: 18rem;">
-                      <img 
-                        v-if="user.has_photo" 
-                        :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.jpg`"
-                        class="card-img-top"
-                      >
-                      <img width="250" height="200" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
-                      <UserCard 
-                        :user="user" 
-                        @setUser="setCurrentUser($event)" 
-                        displaySeeMoreBtn
-                      />
+            <div v-else>
+              <div v-for="(users, dep) in filteredUsers" v-bind:key="users"  >
+                <div v-if="users.length > 0">
+                <h3 > {{dep}} </h3> 
+                  <div class="row">
+                    <div class="card-container" v-for="user in users" v-bind:key="user">
+                      <div class="card align" style="width: 18rem;">
+                        <img 
+                          v-if="user.has_photo" 
+                          :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.jpg`"
+                          class="card-img-top"
+                        >
+                        <img width="250" height="200" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
+                        <UserCard 
+                          :user="user" 
+                          @setUser="setCurrentUser($event)" 
+                          displaySeeMoreBtn
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
- 
+  
 
+              </div>
             </div>
+
 
 
           </div>
