@@ -1,7 +1,7 @@
 # TROMBI
 
-TROMBI est une application permettant de générer un trombinoscope à partir d'un annuaire LDAP.
-Il permet aussi d'afficher l'agenda de chaque personne du trombinoscope grâce à un agenda compatible iCalendar/CALDAV.
+TROMBI est une application web permettant de générer un trombinoscope à partir d'un annuaire LDAP.
+Elle permet aussi d'afficher l'agenda de chaque personne du trombinoscope en se connectant à un agenda compatible iCalendar/CALDAV.
 
 Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 
