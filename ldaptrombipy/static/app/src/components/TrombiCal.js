@@ -10,6 +10,7 @@ export default {
         UserCard, UserCalendar
     },
     mounted() {
+        document.title = this.$config.APP_NAME;
         axios.get(`${this.$config.API_ENDPOINT}/users_order_by_dep`).then((response) => {
             this.allUsers = response.data
             this.filteredUsers = Object.assign(this.allUsers, {});

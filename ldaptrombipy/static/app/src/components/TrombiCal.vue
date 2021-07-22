@@ -60,7 +60,6 @@
                 <UserCalendar :user="currentUser"/>
 
               </div>
-
             </div>
             <div v-else>
               <div v-for="(users, dep) in filteredUsers" v-bind:key="users"  >
