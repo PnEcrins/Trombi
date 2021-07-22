@@ -1,7 +1,7 @@
 # TROMBI
 
-TROMBI est une application permettant de générer un trombinoscope à partir d'un annuaire LDAP.
-Il permet aussi d'afficher l'agenda de chaque personne du trombinoscope grâce à un agenda compatible iCalendar/CALDAV.
+TROMBI est une application web permettant de générer un trombinoscope à partir d'un annuaire LDAP.
+Elle permet aussi d'afficher l'agenda de chaque personne du trombinoscope en se connectant à un agenda compatible iCalendar/CALDAV.
 
 Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 
@@ -9,17 +9,17 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 
 - Liste des utilisateurs présents dans l'annuaire
 - Regroupement des utilisateurs par Service (Department) de l'annuaire
-- Affichage d'une fiche par utilisateur avec sa photo, son nom, sa fonction, sa description, son email, ses numéros de téléphone et son agenda si son email est renseigné dans l'annuaire LDAP
+- Affichage d'une fiche par utilisateur avec sa photo, son nom, sa description, son email, ses numéros de téléphone et son agenda (si son email est renseigné dans l'annuaire LDAP)
 - Possibilité d'ajouter ou modifier les photos des utilisateurs (stockés sur le serveur applicatif)
 
-![Screenshot HOME](https://github.com/PnEcrins/Trombi/blob/doc-readme/docs/trombi-home.jpg)
+![Screenshot HOME](https://github.com/PnEcrins/Trombi/blob/main/docs/trombi-home.jpg)
 
-![Screenshot FICHE](https://github.com/PnEcrins/Trombi/blob/doc-readme/docs/trombi-fiche.jpg)
+![Screenshot FICHE](https://github.com/PnEcrins/Trombi/blob/main/docs/trombi-fiche.jpg)
 
 ## Technologies
 
-Backend : Python / Flask
-Frontend : VueJS
+- Backend : Python / Flask
+- Frontend : VueJS
 
 ## Installation
 
@@ -31,7 +31,7 @@ Frontend : VueJS
   cp ldaptrombipy/static/app/public/config.sample.json cp ldaptrombipy/static/app/public/config.json
   ```
 
-  Le fichier `ldaptrombipy/config.py` contient la connexion au LDAP et au Caldav. Il permet aussi d'exclure des groupes d'utilisateurs.
+  Le fichier `ldaptrombipy/config.py` contient la connexion au LDAP et au Caldav. Il permet aussi d'exclure des utilisateurs ou des groupes d'utilisateurs.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
 
 - Lancer le script d'installation `install_app.sh`
