@@ -7,7 +7,7 @@ echo $APP_DIR
 . $APP_DIR/settings.ini
 
 
-
+cd $APP_DIR
 # activate the virtualenv
 source $APP_DIR/venv/bin/activate
 
