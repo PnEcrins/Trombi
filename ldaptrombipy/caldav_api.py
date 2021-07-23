@@ -52,7 +52,7 @@ def user_cal(email):
             "allDay": e.all_day,
             "editable": False,
             "location": e.location,
-            "organizer": f"{e.organizer.common_name}",
+            "organizer": f"{e.organizer.common_name if e.organizer else None}",
             "attendees": [f"{att.common_name} ({att.email})" for att in e.attendees]
         }
         r.append(event_as_dict)
