@@ -18,12 +18,20 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 
 ## Technologies
 
+- OS : Debian 10
 - Backend : Python / Flask
 - Frontend : VueJS
 
 ## Installation
 
-- Télécharger le zip du dépôt dans le répertoire `/home` de votre utilisateur. Dézippez le et renommez le "trombi"
+- Télécharger le zip de la version souhaitée (X.Y.Z) dans le répertoire `/home` de votre utilisateur. Dézippez le et renommez le "trombi"
+  ```
+  cd /home/`whoami`
+  wget https://github.com/PnEcrins/Trombi/archive/X.Y.Z.zip
+  unzip X.Y.Z.zip
+  mv Trombi-X.Y.Z trombi
+  rm X.Y.Z.zip
+  ```
 - Désampler les fichiers de configuration et les modifier
   ```
   cp settings.sample.ini settings.ini
@@ -35,7 +43,7 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
 
 - Lancer le script d'installation `install_app.sh`
-- L'API est lancée sur le port 5006 par défault
+- L'API est lancée sur le port 5006 par défaut
 
 ## Configuration Apache
 
