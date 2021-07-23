@@ -51,7 +51,8 @@ def user_cal(email):
             "end_str": e.end.datetime.strftime("%d/%m/%Y %H:%M"),
             "allDay": e.all_day,
             "editable": False,
-            "organizer": str(e.organizer),
+            "location": e.location,
+            "organizer": f"{e.organizer.common_name} ({e.organizer.email})",
             "attendees": [f"{att.common_name} ({att.email})" for att in e.attendees]
         }
         r.append(event_as_dict)

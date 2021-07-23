@@ -37,7 +37,6 @@
         <div id="page-content-wrapper">
           <div class="container-fluid">
             <div v-if="currentUser">
-              <h2> Fiche {{currentUser?.displayName}} </h2>
               <div class="card mb-3">
                 <div class="row g-0">
                   <div class="col-md-3">

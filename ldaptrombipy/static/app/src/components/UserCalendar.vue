@@ -76,8 +76,11 @@ export default {
         handlEventDidMount(info) {
             const content = `
                 <b> ${info.event.title} </b> <br/>
-                <p> <b> Début </b> : ${info.event.extendedProps.begin_str}  </br>
-                    <b> Fin </b> : ${info.event.extendedProps.end_str}
+                <p>
+                    <b> Organisateur </b> ${info.event.extendedProps.organizer} </br>
+                     <b> Début </b> : ${info.event.extendedProps.begin_str}  </br>
+                    <b> Fin </b> : ${info.event.extendedProps.end_str} </br>
+                    <b> Lieu </b>: ${info.event.extendedProps.location}
                 </p>
                 <b> Participants </b>: ${info.event.extendedProps.attendees}
             `
