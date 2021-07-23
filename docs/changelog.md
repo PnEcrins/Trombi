@@ -1,5 +1,15 @@
 # Changelog
 
+1.1.0 (2021-07-23)
+------------------
+
+**✨ Fonctionnalités**
+
+* Modification des icônes des boutons
+* Nom des utilisateurs cliquable
+* Complément des infos sur les évenements de l'agenda
+* Correction du script ``install_app.sh``
+
 1.0.0 (2021-07-21)
 ------------------
 
