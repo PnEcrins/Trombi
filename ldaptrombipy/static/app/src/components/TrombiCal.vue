@@ -41,7 +41,7 @@
                 <div class="row g-0">
                   <div class="col-md-3">
                       <img 
-                        v-if="currentUser.has_photo" :src="`${$config.API_ENDPOINT}/static/images/${currentUser?.sAMAccountName}.jpg`"
+                        v-if="currentUser.has_photo" :src="`${$config.API_ENDPOINT}/static/images/${currentUser?.sAMAccountName}.${currentUser?.photo_extension}`"
                         class="img-fluid rounded-start"
                         >
                       <img v-else src="../assets/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
@@ -69,7 +69,7 @@
                       <div class="card align" style="width: 18rem;">
                         <img 
                           v-if="user.has_photo" 
-                          :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.jpg`"
+                          :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.${user?.photo_extension}`"
                           class="card-img-top"
                         >
                         <img width="250" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">

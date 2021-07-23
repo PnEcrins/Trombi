@@ -1,5 +1,7 @@
-from pathlib import Path
+import glob
+import os 
 
+from pathlib import Path
 
 from flask import Blueprint, jsonify, request
 from ldap3 import ALL_ATTRIBUTES, SUBTREE
@@ -45,8 +47,6 @@ def build_ldap_filter_string(filters):
 def all_users(ldap_cnx):
     filters = request.args.to_dict()
     f_string = build_ldap_filter_string(filters)
-    # TODO : groups voir nextcloud
-    # if "group" in filters:
     ldap_cnx.search(
         search_base=base,
         search_filter=f_string,
@@ -82,9 +82,11 @@ def all_users_by_dep(ldap_cnx):
                 if excluded_groups in dn:
                     wanted_user = False
             if wanted_user:
-                login = user.get("sAMAccountName", "") + ".jpg"
-                file = Path(STATIC_IMAGE_PATH / login)
-                user["has_photo"] = file.exists()
+                login = user.get("sAMAccountName", "")+".*"
+                photo_path = glob.glob(str(STATIC_IMAGE_PATH / login))
+                if len(photo_path) > 0:
+                    user["has_photo"] = True
+                    user["photo_extension"] = photo_path[0].split(".")[-1]
                 dep = user["department"]
                 if len(dep) > 0:
                     cur_dep = dep
@@ -120,15 +122,13 @@ def test(ldap_cnx):
 def updload_photo(user):
     file = request.files.get("image")
     if file:
-        print(file)
         extension = file.filename.split(".")[1].lower()
-        print(extension)
-        if extension == "jpg":
-            new_file_path = Path(STATIC_IMAGE_PATH / f"{user}.{extension}")
-            file.save(new_file_path)
-            return str(new_file_path)
-        else:
-            return BadRequest("Extension must be .jpg")
+        search_photo = Path(STATIC_IMAGE_PATH / f"{user}.*")
+        for exist_photo in glob.glob(str(search_photo)):
+            os.remove(exist_photo)
+        new_file_path = Path(STATIC_IMAGE_PATH / f"{user}.{extension}")
+        file.save(new_file_path)
+        return str(new_file_path)
     return BadRequest("No file")
 
 
