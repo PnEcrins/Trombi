@@ -7,7 +7,8 @@ sudo apt-get install python3-venv
 APP_DIR=$(readlink -e "${0%/*}")
 
 echo $APP_DIR
-python3 -m venv -p /usr/bin/python3 venv 
+pip3 install virtualenv
+python3 -m virtualenv -p /usr/bin/python3 venv 
 
 source venv/bin/activate
 pip install -r requirements.txt

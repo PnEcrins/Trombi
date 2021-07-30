@@ -31,6 +31,8 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   unzip X.Y.Z.zip
   mv Trombi-X.Y.Z trombi
   rm X.Y.Z.zip
+  sudo apt-get install -y python3-pip
+
   ```
 - Désampler les fichiers de configuration et les modifier
   ```
