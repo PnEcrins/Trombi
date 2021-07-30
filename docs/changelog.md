@@ -1,5 +1,16 @@
 # Changelog
 
+1.1.1 (2021-07-30)
+------------------
+
+**✨ Fonctionnalités**
+
+* Support de tous les formats d'image et plus uniquement du ``.jpg``
+
+**🐛 Corrections**
+
+* Correction du script ``install_app.sh`` (à tester)
+
 1.1.0 (2021-07-23)
 ------------------
 
