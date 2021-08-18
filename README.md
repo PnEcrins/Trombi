@@ -38,7 +38,7 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   ```
   cp settings.sample.ini settings.ini
   cp ldaptrombipy/config.sample.py ldaptrombipy/config.py
-  cp ldaptrombipy/static/app/public/config.sample.json cp ldaptrombipy/static/app/public/config.json
+  cp ldaptrombipy/static/app/public/config.sample.json ldaptrombipy/static/app/public/config.json
   ```
 
   Le fichier `ldaptrombipy/config.py` contient la connexion au LDAP et au Caldav. Il permet aussi d'exclure des utilisateurs ou des groupes d'utilisateurs.
