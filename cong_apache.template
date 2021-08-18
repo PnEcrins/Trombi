@@ -1,5 +1,5 @@
-Alias /trombi /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist
-<Directory /home/UNIX_USER/workspace/trombi/ldaptrombipy/static/app/dist >
+Alias /trombi /home/UNIX_USER/trombi/ldaptrombipy/static/app/dist
+<Directory /home/UNIX_USER/trombi/ldaptrombipy/static/app/dist >
 Require all granted
 </Directory>
 
