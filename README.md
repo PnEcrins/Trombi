@@ -57,6 +57,32 @@ sudo a2enmod proxy
 sudo a2enmod proxy_http
 ```
 
+## Développement
+
+### Backend
+
+
+- Créer un fichier .env à la dans le répertoire `ldaptrombipy` et y mettre les variables suivantes :
+
+ ```
+FLASK_RUN_PORT=5004
+FLASK_ENV=development
+ ```
+- Activer le virtualenv `source venv/bin/activate`
+
+Lancer le backend : `flask run`
+ 
+ ### Frontend
+
+Le frontend utilise `vue-cli` comme structure d'application, ainsi que ses outils de build.
+
+Depuis `ldaptrombipy/static`:
+- Installer nvm : https://github.com/nvm-sh/nvm
+- Installer node et npm : `nvm install`
+- Installer les dépendances : `npm install`
+
+Lancer le frontend `npm run serve`
+
 Voir le fichier d'exemple : `conf_apache.template`
 
 ## Licence
