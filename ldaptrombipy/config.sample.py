@@ -6,7 +6,7 @@ PORT = 389
 DN = "MY_DN"
 PASSWORD = "lalala"
 EXCLUDED_GROUPS = ["Utilisateurs Partis"]
-
+BASE_QUERY="cd=pne,cd=dom"
 
 # CALDAV CONFIG
 CALDAV_SERVER = ""

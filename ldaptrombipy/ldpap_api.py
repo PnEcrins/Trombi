@@ -8,11 +8,11 @@ from ldap3 import ALL_ATTRIBUTES, SUBTREE
 from werkzeug.exceptions import BadRequest
 
 from ldaptrombipy.ldap_utils import ldap_connect
+from ldaptrombipy.config import BASE_QUERY
 from ldaptrombipy.env import STATIC_IMAGE_PATH
 from ldaptrombipy.config import EXCLUDED_GROUPS
 
 blueprint = Blueprint("api", __name__)
-base = "dc=pne,dc=dom"
 
 
 RETURNED_ATTR = [
@@ -48,7 +48,7 @@ def all_users(ldap_cnx):
     filters = request.args.to_dict()
     f_string = build_ldap_filter_string(filters)
     ldap_cnx.search(
-        search_base=base,
+        search_base=BASE_QUERY,
         search_filter=f_string,
         search_scope=SUBTREE,
         attributes=RETURNED_ATTR,
@@ -66,7 +66,7 @@ def all_users_by_dep(ldap_cnx):
     f_string = build_ldap_filter_string(filters)
     # TODO : groups voir nextcloud
     ldap_cnx.search(
-        search_base=base,
+        search_base=BASE_QUERY,
         search_filter=f_string,
         search_scope=SUBTREE,
         attributes=RETURNED_ATTR,
@@ -106,7 +106,7 @@ def test(ldap_cnx):
     f_string = build_ldap_filter_string(filters)
     # TODO : groups voir nextcloud
     ldap_cnx.search(
-        search_base=base,
+        search_base=BASE_QUERY,
         search_filter=f_string,
         search_scope=SUBTREE,
         attributes=ALL_ATTRIBUTES,

@@ -25,6 +25,7 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 ## Installation
 
 - Télécharger le zip de la version souhaitée (X.Y.Z) dans le répertoire `/home` de votre utilisateur. Dézippez le et renommez le "trombi"
+
   ```
   cd /home/`whoami`
   wget https://github.com/PnEcrins/Trombi/archive/X.Y.Z.zip
@@ -34,11 +35,13 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   sudo apt-get install -y python3-pip
 
   ```
+
 - Désampler les fichiers de configuration et les modifier
+
   ```
   cp settings.sample.ini settings.ini
   cp ldaptrombipy/config.sample.py ldaptrombipy/config.py
-  cp ldaptrombipy/static/app/public/config.sample.json ldaptrombipy/static/app/public/config.json
+  cp ldaptrombipy/static/app/dist/config.sample.json ldaptrombipy/static/app/dist/config.json
   ```
 
   Le fichier `ldaptrombipy/config.py` contient la connexion au LDAP et au Caldav. Il permet aussi d'exclure des utilisateurs ou des groupes d'utilisateurs.
@@ -58,7 +61,7 @@ Voir le fichier d'exemple : `conf_apache.template`
 
 ## Licence
 
-* OpenSource - GPLv3
-* Auteur : Théo Lechémia / Parc national des Écrins / 2021
+- OpenSource - GPLv3
+- Auteur : Théo Lechémia / Parc national des Écrins / 2021
 
 [![Logo PNE](http://geonature.fr/img/logo-pne.jpg)](https://www.ecrins-parcnational.fr)
