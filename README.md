@@ -50,6 +50,10 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 - Lancer le script d'installation `install_app.sh`
 - L'API est lancée sur le port 5006 par défaut
 
+## Fonctionnement
+
+- Le trombinoscope n'affiche que les personne ayant un nom et un prénom dans l'AD
+
 ## Configuration Apache
 
 ```
