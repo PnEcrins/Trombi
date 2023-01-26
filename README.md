@@ -48,7 +48,7 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
 
 - Lancer le script d'installation `install_app.sh`
-- L'API est lancée sur le port 5006 par défaut
+- L'application est disponible sur `<IP>/trombi`
 
 ## Fonctionnement
 
