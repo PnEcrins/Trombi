@@ -50,20 +50,15 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
 - Lancer le script d'installation `install_app.sh`
 - Réaliser une configuration Apache : Créer un fichier `/etc/apache2/sites-available/trombi.conf` et copier le contenu du fichier https://github.com/PnEcrins/Trombi/blob/main/cong_apache.template (en adaptant les chemins). Activer la configuration et redémarrer Apache 
 ```
+sudo a2enmod proxy
+sudo a2enmod proxy_http
 sudo a2ensite trombi
 sudo apachectl restart
 ```
 
 ## Fonctionnement
 
-- Le trombinoscope n'affiche que les personne ayant un nom et un prénom dans l'AD
-
-## Configuration Apache
-
-```
-sudo a2enmod proxy
-sudo a2enmod proxy_http
-```
+- Le trombinoscope n'affiche que les personnes ayant un nom et un prénom dans l'AD
 
 ## Développement
 
