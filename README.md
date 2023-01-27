@@ -48,7 +48,11 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
 
 - Lancer le script d'installation `install_app.sh`
-- L'application est disponible sur `<IP>/trombi`
+- Réaliser une configuration Apache : Créer un fichier `/etc/apache2/sites-available/trombi.conf` et copier le contenu du fichier https://github.com/PnEcrins/Trombi/blob/main/cong_apache.template (en adaptant les chemins). Activer la configuration et redémarrer Apache 
+```
+sudo a2ensite trombi
+sudo apachectl restart
+```
 
 ## Fonctionnement
 
