@@ -5,3 +5,4 @@ ics
 flask-cors
 python-dotenv
 gunicorn
+flask-cors

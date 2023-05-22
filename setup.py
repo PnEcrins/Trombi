@@ -5,7 +5,7 @@ from pathlib import Path
 root_dir = Path(__file__).absolute().parent
 with (root_dir / "VERSION").open() as f:
     version = f.read()
-with (root_dir / "README.rst").open() as f:
+with (root_dir / "README.md").open() as f:
     long_description = f.read()
 
 
@@ -21,7 +21,7 @@ setuptools.setup(
     version=version,
     packages=setuptools.find_packages("ldaptrombipy"),
     package_dir={"": "ldaptrombipy"},
-    install_requires=list(open("ldaptrombipy/requirements.in", "r")),
+    install_requires=list(open("requirements.in", "r")),
     classifiers=[
         "Framework :: Flask",
         "Programming Language :: Python :: 3",
