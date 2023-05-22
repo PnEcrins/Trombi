@@ -8,15 +8,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@fullcalendar/core": "^5.8.0",
-    "@fullcalendar/daygrid": "^5.8.0",
-    "@fullcalendar/icalendar": "^5.8.0",
-    "@fullcalendar/interaction": "^5.8.0",
-    "@fullcalendar/list": "^5.8.0",
-    "@fullcalendar/timegrid": "^5.8.0",
-    "@fullcalendar/vue": "^5.8.0",
-    "@fullcalendar/vue3": "^5.8.0",
+    "@fullcalendar/core": "^6.1.7",
+    "@fullcalendar/daygrid": "^6.1.7",
+    "@fullcalendar/icalendar": "^6.1.7",
+    "@fullcalendar/interaction": "^6.1.7",
+    "@fullcalendar/list": "^6.1.7",
+    "@fullcalendar/timegrid": "^6.1.7",
+    "@fullcalendar/vue3": "^6.1.7",
     "@popperjs/core": "^2.9.2",
+    "@vue/cli-service": "^5.0.8",
     "axios": "^0.21.1",
     "bootstrap": "^4.1.3",
     "config": "^3.3.6",
@@ -25,16 +25,7 @@
     "popper": "^1.0.1",
     "request": "^2.79.0",
     "tippy.js": "^6.3.1",
-    "vue": "^3.0.0"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "vue": "^3.3.4"
   },
   "eslintConfig": {
     "root": true,
