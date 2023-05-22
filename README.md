@@ -48,14 +48,17 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
 
 - Lancer le script d'installation `install_app.sh`
-- L'API est lancée sur le port 5006 par défaut
-
-## Configuration Apache
-
+- Réaliser une configuration Apache : Créer un fichier `/etc/apache2/sites-available/trombi.conf` et copier le contenu du fichier https://github.com/PnEcrins/Trombi/blob/main/cong_apache.template (en adaptant les chemins). Activer la configuration et redémarrer Apache 
 ```
 sudo a2enmod proxy
 sudo a2enmod proxy_http
+sudo a2ensite trombi
+sudo apachectl restart
 ```
+
+## Fonctionnement
+
+- Le trombinoscope n'affiche que les personnes ayant un nom et un prénom dans l'AD
 
 ## Développement
 
