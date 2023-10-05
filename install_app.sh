@@ -12,6 +12,7 @@ python3 -m virtualenv -p /usr/bin/python3 venv
 
 source venv/bin/activate
 pip install -r requirements.txt
+pip install .
 
 sudo cp trombi.service.template /etc/systemd/system/trombi.service
 sudo sed -i "s%{{USER}}%$(whoami)%" /etc/systemd/system/trombi.service
