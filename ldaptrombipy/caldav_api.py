@@ -1,13 +1,12 @@
 from datetime import datetime, timedelta
 
-from ics import Calendar
 
-# from ics import Calendar
-
-from flask import Blueprint, request
 from caldav import DAVClient
-from ldaptrombipy.config import CALDAV_PASSWORD, CALDAV_SERVER, CALDAV_USERNAME
+from flask import Blueprint, request
+from ics import Calendar
 from flask.json import jsonify
+
+from ldaptrombipy.config import CALDAV_PASSWORD, CALDAV_SERVER, CALDAV_USERNAME
 
 blueprint = Blueprint("caldav", __name__)
 
@@ -41,19 +40,29 @@ def user_cal(email):
             calender_with_all_events.events.add(event)
     r = []
     for e in calender_with_all_events.events:
+        begin = None
+        end = None
+        # for all day event the date is in UTC - make bug the calendar
+        # only start date is mandatory
+        if e.all_day:
+            begin = e.end
+        else:
+            begin = e.begin
+            end = e.end
         event_as_dict = {
             "title": e.name,
             "id": e.uid,
             "description": e.description,
-            "start": str(e.begin),
-            "end": str(e.end),
+            "start": str(begin),
+            "end": str(end),
             "begin_str": e.begin.datetime.strftime("%d/%m/%Y %H:%M"),
             "end_str": e.end.datetime.strftime("%d/%m/%Y %H:%M"),
             "allDay": e.all_day,
             "editable": False,
             "location": e.location,
             "organizer": f"{e.organizer.common_name if e.organizer else None}",
-            "attendees": [f"{att.common_name} ({att.email})" for att in e.attendees]
+            "attendees": [f"{att.common_name} ({att.email})" for att in e.attendees],
         }
         r.append(event_as_dict)
+
     return jsonify(r)
