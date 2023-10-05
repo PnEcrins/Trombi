@@ -51,6 +51,9 @@ export default {
                     events : {
                         url: `${this.$config.API_ENDPOINT}/caldav/${this.user.mail}`,
                     },
+                    eventSourceFailure(error) {
+                        alert("Error lors du chargement de l'agenda... Appelez un geek")
+                    },
                     // aspectRatio: 1,
                     slotMinTime: "06:00:00",
                     slotMaxTime: "20:00:00",

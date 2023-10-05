@@ -33,8 +33,9 @@ def user_cal(email):
     # CalDav Events object have no start and end properties
     # we must pass throw ICS lib to build Calendar object for each event
     for e in calendar.date_search(start=start, end=end, expand=True):
-        user_cal_str = user_cal_str + e.data
-        list_of_calendar.append(Calendar(e.data))
+        # HACK : STATUS:NEEDS-ACTION make bug the Calendar obj
+        str_event = e.data.replace("STATUS:NEEDS-ACTION", "STATUS:TENTATIVE")
+        list_of_calendar.append(Calendar(str_event))
     for c in list_of_calendar:
         for event in c.events:
             calender_with_all_events.events.add(event)
