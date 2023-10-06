@@ -1,5 +1,18 @@
 # Changelog
 
+1.2.0 (2023-10-06)
+------------------
+
+**✨ Fonctionnalités**
+
+* Améliorations graphiques et ergonomiques
+* Passage des filtres du LDAP en paramètres
+
+**🐛 Corrections**
+
+* Correction des évènements récurrents (#3)
+* Suppression des images sous copyright (#4)
+
 1.1.1 (2021-07-30)
 ------------------
 
