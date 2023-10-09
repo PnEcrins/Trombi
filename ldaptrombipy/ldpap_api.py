@@ -1,5 +1,5 @@
 import glob
-import os 
+import os
 
 from pathlib import Path
 
@@ -8,7 +8,7 @@ from ldap3 import ALL_ATTRIBUTES, SUBTREE
 from werkzeug.exceptions import BadRequest
 
 from ldaptrombipy.ldap_utils import ldap_connect
-from ldaptrombipy.config import BASE_QUERY
+from ldaptrombipy.config import BASE_QUERY, SEARCH_FILTERS
 from ldaptrombipy.env import STATIC_IMAGE_PATH
 from ldaptrombipy.config import EXCLUDED_GROUPS
 
@@ -27,13 +27,12 @@ RETURNED_ATTR = [
     "mail",
     "homePhone",
     "sAMAccountName",
-    "mobile"
+    "mobile",
 ]
 
 
-
 def build_ldap_filter_string(filters):
-    and_filters = {"objectclass": "user", "cn": "*", "sn": "*"}
+    and_filters = SEARCH_FILTERS
     if "department" in filters:
         and_filters["department"] = filters["department"]
     f_string = ""
@@ -82,7 +81,7 @@ def all_users_by_dep(ldap_cnx):
                 if excluded_groups in dn:
                     wanted_user = False
             if wanted_user:
-                login = user.get("sAMAccountName", "")+".*"
+                login = user.get("sAMAccountName", "") + ".*"
                 photo_path = glob.glob(str(STATIC_IMAGE_PATH / login))
                 if len(photo_path) > 0:
                     user["has_photo"] = True
@@ -95,28 +94,31 @@ def all_users_by_dep(ldap_cnx):
                 data.setdefault(cur_dep, []).append(user)
     sorted_users = {}
     for key, val in data.items():
-        sorted_users[key] = sorted(val, key=lambda k : k["displayName"])
+        sorted_users[key] = sorted(val, key=lambda k: k["displayName"])
     return jsonify(sorted_users)
 
 
-@blueprint.route("/test")
-@ldap_connect
-def test(ldap_cnx):
-    filters = request.args.to_dict()
-    f_string = build_ldap_filter_string(filters)
-    # TODO : groups voir nextcloud
-    ldap_cnx.search(
-        search_base=BASE_QUERY,
-        search_filter=f_string,
-        search_scope=SUBTREE,
-        attributes=ALL_ATTRIBUTES,
-    )
-    with open("/tmp/truc.txt", "w") as f:
-        for r in ldap_cnx.response:
-            user = r.get("attributes", "")
-            f.write(str(user))
-    return 'la'
-    
+# @blueprint.route("/test")
+# @ldap_connect
+# def test(ldap_cnx):
+#     filters = request.args.to_dict()
+#     f_string = build_ldap_filter_string(filters)
+#     # TODO : groups voir nextcloud
+#     ldap_cnx.search(
+#         search_base=BASE_QUERY,
+#         search_filter=f_string,
+#         search_scope=SUBTREE,
+#         attributes=ALL_ATTRIBUTES,
+#     )
+#     with open("/tmp/truc.txt", "w") as f:
+#         for r in ldap_cnx.response:
+#             user = r.get("attributes", "")
+#             f.write("\n----------------------------------------------------------\n")
+#             f.write(str(user))
+#             f.write("\n------------------------------------------------------------\n")
+
+#     return "la"
+
 
 @blueprint.route("/upload_photo/<user>", methods=["POST"])
 def updload_photo(user):
