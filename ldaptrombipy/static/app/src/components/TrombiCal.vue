@@ -4,11 +4,11 @@
           <div class="logo-container">
               <img @click="refresh()" id="logo" src="../assets/logo.png">
           </div>
-            <h1 id="refresh" @click="refresh()" > {{$config.APP_NAME}} </h1>
+            <h4 class="mb-3" id="refresh" @click="refresh()" > {{$config.APP_NAME}} </h4>
   
             <ul class="sidebar-nav">
               <input 
-                class="form form-control" 
+                class="form form-control mb-3" 
                 placeholder="Rechercher" 
                 type="text" name="search" id="search"
                 v-model="searchPattern" @input="filterUsers"
@@ -16,18 +16,21 @@
                 <li v-for="(users, dep) in filteredUsers" v-bind:key="users">
                     <div v-if="users.length > 0">
                       <a class="dep"
-                        href="#"
+                        href="#/dep"
                         @click="setCurrDepartment(dep)"
                     > 
-                    {{dep}} 
+                     <i class="fa fa-home icon"></i>
+                      {{dep}} 
                     </a> 
                         <a 
+                          href="#/user"
                           class="person" 
                           v-for="user in users"
                           v-bind:key="user"
                           @click="setCurrentUser(user)"
                         >
                             {{user.displayName}}
+
                         </a>
                     </div>
 
@@ -44,7 +47,7 @@
                         v-if="currentUser.has_photo" :src="`${$config.API_ENDPOINT}/static/images/${currentUser?.sAMAccountName}.${currentUser?.photo_extension}`"
                         class="img-fluid rounded-start"
                         >
-                      <img v-else src="../assets/no-photo.jpg" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
+                      <img v-else src="../assets/no-photo.png" class="img-fluid rounded-start" alt="Pensez à ajouter une photo">
                   </div>
                   <div class="col-md-9 no-padding" >
                     <UserCard 
@@ -63,7 +66,7 @@
             <div v-else>
               <div v-for="(users, dep) in filteredUsers" v-bind:key="users"  >
                 <div v-if="users.length > 0">
-                <h3 > {{dep}} </h3> 
+                <h3 class="dep-title" > <i class="fa fa-home dep-title-logo"></i> {{dep}} </h3> 
                   <div class="row">
                     <div class="card-container" v-for="user in users" v-bind:key="user">
                       <div class="card align" style="width: 18rem;">
@@ -72,7 +75,7 @@
                           :src="`${$config.API_ENDPOINT}/static/images/${user?.sAMAccountName}.${user?.photo_extension}`"
                           class="card-img-top"
                         >
-                        <img width="250" v-else src="../assets/no-photo.jpg" class="card-img-top" alt="...">
+                        <img width="250" v-else src="../assets/no-photo.png" class="card-img-top" alt="...">
                         <UserCard 
                           :user="user" 
                           @setUser="setCurrentUser($event)" 
@@ -133,13 +136,14 @@ a {
 }
 
 #sidebar-wrapper{
-  width: 15%;
-  /* position: fixed; */
+  width: 25%;
 
   height: 100vh;
   max-height: 100vh;
   overflow-y: auto;
-  background-color: rgba(109, 148, 150, 0.397);
+    background-color: #32323a;
+    padding: 5px
+
   
 }
 
@@ -151,27 +155,40 @@ a {
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
+  line-height: 40px;
     display: block;
     
 }
 
+.person {
+  text-indent: 20px;
+      margin-left: -15px;
+    margin-right: -15px;
+}
+
+.dep {
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 5px;
+}
+
+
+
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: white;
     cursor: pointer;
 }
 .sidebar-nav li a.dep{
   font-weight: bold;
-  color: black;
+  color: #42b983;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.2);
+  background: #28282e;
+    color: #1FB5AD;
 }
 
 .sidebar-nav li a:active,
@@ -204,4 +221,29 @@ a {
 .align img {
   align-items: center;
 }
+
+#refresh {
+    width: 30%;
+    margin: 0 auto;
+    font-weight: bold;
+    color:white
+}
+
+.icon {
+  font-size: large;
+}
+
+.dep-title-logo {
+    text-align: center;
+    font-size: 30px;
+    background: #42b983;
+    border-radius: 100%;
+    color: #fff;
+    padding: 5px;
+}
+
+.dep-title {
+    margin-left: -15px;
+}
+
 </style>

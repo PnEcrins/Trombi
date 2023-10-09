@@ -56,9 +56,15 @@ sudo a2ensite trombi
 sudo apachectl restart
 ```
 
-## Fonctionnement
+## Fonctionnement et configuration
 
-- Le trombinoscope n'affiche que les personnes ayant un nom et un prénom dans l'AD
+Le fichier `config.py` permet de renseigner les paramètre de connexion au LDAP et au CALDAV.
+Les paramètre suivants permettent de configurer les filtres sur le LDAP :
+
+- `BASE_QUERY` définit le DIT à partir duquel la recherche débute
+- `SEARCH_FILTERS` définit les filtres par défaut sur toutes les requête au LDAP. C'est un dictionnaire ou la clé est l'élément sur lequel le filtre doit s'effectué, et la valeur est la valeur du filtre. Il est renseigné par défaut par `{"objectClass": "*"}`, qui renvoie donc tous les éléments du LDAP. Pour renvoyer que les élément qui on un `surname`, renseignez : `{"sn": "*"}`. Les filtres de non égalité ne sont pas implémentés.
+
+Les filtres LDAP n'étant pas très aisé, le paramètre `EXCLUDED_GROUPS` permet d'établir une liste des éléments à exclure. L'exclusion est basée sur le `DN` (ou distinguishedName) en enlevant les préfixes (CN, OU ...). Exemple, pour le DN suivants : `CN=Catherine Bidule,OU=Utilisateurs Partis,OU=ECRINS,DC=PNE,DC=dom`, mettre `EXCLUDED_GROUPS = ['Utilisateurs Partis']` pour exclure cette personne
 
 ## Développement
 

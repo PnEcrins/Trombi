@@ -55,9 +55,9 @@ export default {
                         alert("Error lors du chargement de l'agenda... Appelez un geek")
                     },
                     // aspectRatio: 1,
-                    slotMinTime: "06:00:00",
+                    slotMinTime: "07:00:00",
                     slotMaxTime: "20:00:00",
-                    height: 600,
+                    height: 800,
                     editable: true,
                     selectable: true,
                     headerToolbar: {
@@ -72,8 +72,6 @@ export default {
                 this.calendar.render();
         },
         handleMouseEnter(info) {
-            console.log(info.event);
-            console.log(info.event.extendedProps);
 
         },
         handlEventDidMount(info) {
@@ -88,7 +86,6 @@ export default {
                 <b> Participants </b>: ${info.event.extendedProps.attendees}
             `
 
-            console.log(info.event);
             tippy(info.el, {
                 content: content,
                 allowHTML: true

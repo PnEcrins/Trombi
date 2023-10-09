@@ -15,6 +15,13 @@ export default {
             this.allUsers = response.data
             this.filteredUsers = Object.assign(this.allUsers, {});
         })
+
+        window.onhashchange = (ev) => {
+            if (!ev.newURL.includes("#")) {
+                this.currentUser = null;
+                this.filteredUsers = this.allUsers;
+            }
+           }
     },
 
     data() {
@@ -43,6 +50,7 @@ export default {
         refresh() {
             this.filteredUsers = this.allUsers;
             this.currentUser = null;
+            window.history.pushState({}, null, '/')
         },
 
         changeHasPhotoProp(userLogin) {
