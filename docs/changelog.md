@@ -13,6 +13,10 @@
 * Correction des évènements récurrents (#3)
 * Suppression des images sous copyright (#4)
 
+Note de version:
+
+Il est nécessaire d'ajouter le paramètre `SEARCH_FILTERS` qui correspond au filtres appliquées par défaut à chaque requête au LDAP.
+
 1.1.1 (2021-07-30)
 ------------------
 

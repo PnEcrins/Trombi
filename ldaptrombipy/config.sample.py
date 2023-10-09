@@ -9,9 +9,11 @@ EXCLUDED_GROUPS = ["Utilisateurs Partis"]
 # the location in the DIT where the search will start
 BASE_QUERY = "dc=bidule,dc=dom"
 
-# default filters = l'élément du ldap doit avoir un nom de famille (sn)
-# tout les élément du ldap sans "sn" ne remonteront pas dans le trombi
-SEARCH_FILTERS = {"sn": "*"}
+# default filters
+# tout les éléments remontent avec cette config
+SEARCH_FILTERS = {"objectClass": "*"}
+# Ne remonter que les éléments avec l'élément sn (surname)
+# SEARCH_FILTERS = {"sn": "*"}
 
 # CALDAV CONFIG
 CALDAV_SERVER = ""
