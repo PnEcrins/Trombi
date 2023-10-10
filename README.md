@@ -35,20 +35,17 @@ Inspiré de l'outil https://github.com/noelmartinon/webagenda-viewer.
   sudo apt-get install -y python3-pip
   ```
 
-- Désampler les fichiers de configuration et les modifier
-
+- Désampler les fichiers de configuration et les modifier :
   ```
   cp settings.sample.ini settings.ini
   cp ldaptrombipy/config.sample.py ldaptrombipy/config.py
   cp ldaptrombipy/static/app/dist/config.sample.json ldaptrombipy/static/app/dist/config.json
   ```
-
   Le fichier `ldaptrombipy/config.py` contient la connexion au LDAP et au Caldav. Il permet aussi d'exclure des utilisateurs ou des groupes d'utilisateurs.
   Le fichier `ldaptrombipy/static/app/public/config.json` est utilisé par le frontend pour connaitre l'API et définir si les utilisateurs peuvent ajouter ou modifier eux-mêmes les photos
-
 - Lancer le script d'installation `install_app.sh`
 - Réaliser une configuration Apache : Créer un fichier `/etc/apache2/sites-available/trombi.conf` et copier le contenu du fichier https://github.com/PnEcrins/Trombi/blob/main/cong_apache.template (en adaptant les chemins).
-  Activer la configuration et redémarrer Apache :
+- Activer la configuration et redémarrer Apache :
   ```
   sudo a2enmod proxy
   sudo a2enmod proxy_http
@@ -72,10 +69,10 @@ Les filtres LDAP n'étant pas très aisé, le paramètre `EXCLUDED_GROUPS` perme
 
 
 - Créer un fichier `.env` à la dans le répertoire `ldaptrombipy` et y mettre les variables suivantes :
- ```
- FLASK_RUN_PORT=5004
- FLASK_ENV=development
- ```
+  ```
+  FLASK_RUN_PORT=5004
+  FLASK_ENV=development
+  ```
 - Activer le virtualenv : `source venv/bin/activate`
 - Lancer le backend : `flask run`
  
