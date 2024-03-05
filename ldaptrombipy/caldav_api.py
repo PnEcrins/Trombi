@@ -36,6 +36,8 @@ def user_cal(email):
         str_event = ics.data.replace("STATUS:NEEDS-ACTION", "STATUS:TENTATIVE")
         cal = Calendar(str_event)
         event = list(cal.events)[0]
+        if event.classification == "PRIVATE":
+            continue
         begin = event.begin
         end = event.end
         # HACK because of bad support of reccurent event in zimbra https://caldav.readthedocs.io/en/latest/index.html?highlight=start#compatibility
