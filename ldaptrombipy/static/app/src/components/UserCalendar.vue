@@ -47,7 +47,7 @@ export default {
             this.calendar = new Calendar(calendarEl, {
                     locale: frLocale,
                     plugins: [ dayGridPlugin, timeGridPlugin, interactionPlugin, FullCalendarICalendar, listPlugin ],
-                    initialView: 'timeGridWeek',
+                    initialView: 'dayGridMonth',
                     events : {
                         url: `${this.$config.API_ENDPOINT}/caldav/${this.user.mail}`,
                     },
