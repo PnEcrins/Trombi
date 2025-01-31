@@ -1,0 +1,7 @@
+venv
+docs
+ldaptrombipy/config.py
+ldaptrombipy/static/app/node_modules
+ldaptrombipy/static/app/dist/config.json
+
+

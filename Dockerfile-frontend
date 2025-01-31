@@ -1,0 +1,4 @@
+FROM nginx
+
+COPY ldaptrombipy/static/app/dist /usr/share/nginx/html
+
