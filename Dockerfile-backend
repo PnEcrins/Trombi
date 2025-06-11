@@ -1,0 +1,19 @@
+FROM python:3.11-slim-bookworm
+
+RUN --mount=type=cache,target=/root/.cache \
+    pip install --upgrade pip setuptools wheel
+
+
+LABEL org.opencontainers.image.source=https://github.com/PnEcrins/trombi
+
+ENV HOST="0.0.0.0"
+ENV APP_PORT=5000
+ENV WORKER_NB=4
+
+COPY . .
+
+RUN pip install . --no-cache-dir
+
+EXPOSE ${APP_PORT}
+
+CMD ["gunicorn", "ldaptrombipy.wsgi:app" , "--timeout=30", "-w 1",  "-b 0.0.0.0:5000"  ,"-n trombi"]

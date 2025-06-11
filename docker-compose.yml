@@ -1,0 +1,49 @@
+services:
+  trombi-back:
+    volumes:
+      - ./ldaptrombipy/config_2.py:/ldaptrombipy/config.py
+    image: trombi-back:1.0
+    networks:
+      - trombi_net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.back.rule=Host(`toto`)"
+      - "traefik.http.routers.back.entrypoints=websecure"
+      - "traefik.http.routers.back.tls.certResolver=myresolver"
+
+  trombi-front:
+    image: trombi-front:1.0
+    networks:
+      - trombi_net
+    volumes:
+      - ./ldaptrombipy/static/app/dist/config.json:/usr/share/nginx/html/config.json
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.front.rule=Host(`localhost`)"
+      - "traefik.http.routers.front.entrypoints=websecure"
+      - "traefik.http.routers.front.tls.certResolver=myresolver"
+
+  traefik:
+    image: traefik:v2.9
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=pouet@pouet.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - traefik_data:/letsencrypt
+    networks:
+      - trombi_net
+
+volumes:
+  traefik_data:
+networks:
+  trombi_net:
